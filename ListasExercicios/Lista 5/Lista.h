@@ -30,4 +30,5 @@ void limpa_lista( Lista *l );
 int conta_elementos( Lista l ); // Fun��o in�til na pr�tica, pois temos o campo 'qtd'.
 
 void concatena(Lista *l1, Lista *l2);
+int busca( Lista *l, void *info, int (*compara)(void *, void *) );
 
