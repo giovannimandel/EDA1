@@ -216,3 +216,19 @@ int insere_ordem( Lista *p, void *info, int (*compara)(void*, void*) ){
 	}
 	return insere_pos( p, info, cont );
 }
+
+void concatena(Lista *l1, Lista *l2){
+	Elemento *aux = l1->cabeca;
+
+	if(aux != NULL){
+		while( aux->proximo != NULL)
+			aux = aux->proximo;
+		aux->proximo = l2->cabeca;
+	} else{	
+		l1->cabeca = l2->cabeca;
+	}
+	l1->qtd = l1->qtd + l2->qtd;
+	l2->cabeca = NULL;
+	l2->qtd = 0;
+	 
+}
