@@ -232,3 +232,8 @@ void concatena(Lista *l1, Lista *l2){
 	l2->qtd = 0;
 	 
 }
+
+int busca( Lista *l, void *info, int (*compara)(void *, void *) ){
+	
+
+}
