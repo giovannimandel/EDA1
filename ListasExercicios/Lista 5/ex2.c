@@ -16,6 +16,8 @@ int main(){
 
     Lista l;
     int a = 1, b = 2, c = 3, d = 4;
+    int k = 2;
+    int f = 69;
     inicializa_lista(&l, sizeof(int));
 
     insere_inicio(&l, &a);
@@ -23,6 +25,7 @@ int main(){
     insere_inicio(&l, &c);
     insere_inicio(&l, &d);
 
+    busca(&l, &f, compara);
     
 
     return 0;

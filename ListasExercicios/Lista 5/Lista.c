@@ -234,6 +234,16 @@ void concatena(Lista *l1, Lista *l2){
 }
 
 int busca( Lista *l, void *info, int (*compara)(void *, void *) ){
-	
+	Elemento *aux = l->cabeca;
 
+	for(int i = 0; i < l->qtd; i++){
+		if(compara(info, aux->info) == 0){
+			printf("Encontrado em %d\n", i);
+			return 1;
+		} else{
+			aux = aux->proximo;
+		}
+	}
+	
+	return -1;
 }
