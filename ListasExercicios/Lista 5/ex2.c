@@ -3,20 +3,14 @@
 
 int compara(void *x, void *y){
     int *a = x, *b = y;
-    if (*a > *b){
-        return 1;
-    }
-    if(*a < *b){
-        return -1;
-    }
-    return 0;
+    return *a - *b;
 }
 
 int main(){
 
     Lista l;
     int a = 1, b = 2, c = 3, d = 4;
-    int k = 2;
+    int k = 1;
     int f = 69;
     inicializa_lista(&l, sizeof(int));
 
@@ -25,7 +19,7 @@ int main(){
     insere_inicio(&l, &c);
     insere_inicio(&l, &d);
 
-    busca(&l, &f, compara);
+    busca(&l, &k, compara);
     
 
     return 0;
