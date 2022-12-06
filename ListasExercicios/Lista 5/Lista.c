@@ -174,15 +174,20 @@ void mostra_lista( Lista l, void (*mostra)(void *) ){
 	else{
 		printf("Dados da lista (%d elementos):\n", l.qtd );
 		Elemento *p = l.cabeca;
-		int cont = 0; // cont � o �ndice do elemento dentro da lista.
+		int cont = 0; // cont � o indice do elemento dentro da lista.
 		while( p != NULL ){
 			printf("[%d] ", cont);
-			mostra( p->info ); // Invoca��o por callback
+			mostra( p->info ); // Invocacao por callback
 			p = p->proximo;
 			cont++;
 		}
 	}
 	printf("--------------------------------\n");
+
+	// void mostra_float( void *x ){ // mostra um float...
+	// 	printf("%.2f\n", *(float *)x ); // a partir de um void*
+	// }
+
 }
 
 int conta_elementos( Lista l ){
@@ -245,4 +250,30 @@ int busca( Lista *l, void *info, int (*compara)(void *, void *) ){
 		}
 	}
 	return -1;
+
+	// 	int compara(void *x, void *y){
+	// 	int *a = x, *b = y;
+	// 	return *a - *b;
+	// }
+}
+
+Lista busca_todos( Lista l, void *info, int (*compara)(void*,void*) ){
+	Elemento *aux = l.cabeca;
+	Lista l2;
+
+	inicializa_lista(&l2, sizeof(int));
+
+	for(int i = 0; i < l.qtd; i++, aux = aux->proximo){
+		if(compara(aux->info, info) == 0){
+			printf("Encontrado em %d\n", i);
+			insere_fim(&l2, &i);
+		}
+	}
+
+	return l2;
+
+	// 	int compara(void *x, void *y){
+	// 	int *a = x, *b = y;
+	// 	return *a - *b;
+	// }
 }
