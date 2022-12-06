@@ -13,16 +13,21 @@ void mostra_int( void *x ){ // mostra um int...
 int main(){
 
     Lista l;
-    int a = 12, b = 6, c = 3;
+    int a = 1, b = 2, c = 3, d = 4;
+    int k = 1;
+    int f = 69;
     inicializa_lista(&l, sizeof(int));
 
-    insere_fim(&l, &a);
-    insere_fim(&l, &b);
-    insere_fim(&l, &c);
-    insere_fim(&l, &a);
-    insere_fim(&l, &a);
+    insere_inicio(&l, &a);
+    insere_inicio(&l, &b);
+    insere_inicio(&l, &c);
+    insere_inicio(&l, &d);
 
     mostra_lista(l, mostra_int);
-    mostra_lista(busca_todos(l, &a, compara), mostra_int);
+
+    inverte_com_pilha(&l);
+    
+    mostra_lista(l, mostra_int);
+
     return 0;
 }

@@ -32,4 +32,5 @@ int conta_elementos( Lista l ); // Fun��o in�til na pr�tica, pois temos 
 void concatena(Lista *l1, Lista *l2);
 int busca( Lista *l, void *info, int (*compara)(void *, void *) );
 Lista busca_todos( Lista l, void *info, int (*compara)(void*,void*) );
+Lista inverte_com_pilha(Lista *l);
 
