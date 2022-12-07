@@ -1,56 +1,49 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include "Matriz.h"
 #include "Pilha.h"
-#include <stdlib.h>
 
 int main(){
+    Matriz m;
+    int n, ini, *vs, x, *v = NULL;;
+    
 
-    Matriz * matriz_adj = malloc(sizeof(Matriz));
+    printf("Digite o numero de vertices do grafo:\n");
+    scanf("%d", &n);
 
-    int vertice, vertice_ini, x, *status; 
+    inicializa_matriz(&m, n+1, n+1);
+    vs = calloc(n+1, sizeof(int));
 
-    printf("Informe o numero de vertices para o grafo: ");
-    scanf("%d", &vertice);
+    carrega_arquivo("matriz.txt", &m);// A matriz deve ter tamanho n+1 (9 vertices, tamanho é 10)  
+                                      // A primeira linha e primeira coluna devem ser preenchidas com 0 (m[0][x] = 0, m[x][0] = 0)
+    Pilha p;
+    printf("Digite o vertice inicial:\n");
+    inicializa_pilha(&p);
+    scanf("%d", &ini);
+    printf("\n");
+    
+    empilha(&p, ini);
 
-    status = calloc(vertice +1, sizeof(int));
+    while(!pilha_vazia(p)){
+        desempilha(&p, &x);
 
-    inicializa_matriz(matriz_adj, vertice + 1, vertice + 1);
+        if(vs[x] == 0){
+            printf("%d\n", x);
+            vs[x] = 1;
 
-    printf("Inicialize a matriz adjacente do grafo:\n");
-    for(int i=1; i <= vertice; i++){
-        for(int j = 1; j <= vertice; j++){
-            scanf("%d", &x);
-            set_valor(matriz_adj, i, j, x);
-        }
-    }
+            for(int i = 1; i <= n; i++){
+                int k;
 
-    printf("Vertice inicial: ");
-    scanf("%d", &vertice_ini);
+                get_valor(m, x, i, &k);
 
-    Pilha * pilha = malloc(sizeof(Pilha));
-
-    inicializa_pilha(pilha);
-
-    empilha(pilha, vertice_ini);
-
-    while(!pilha_vazia(*pilha)){
-        desempilha(pilha, &x);
-
-        if(status[x] == 0){
-            printf("Estou visitando: %d\n", x);
-            status[x] = 1;
-
-            for(int i = 1; i <= vertice; i++){
-                int p;
-
-                get_valor(*matriz_adj, x, i, &p);
-
-                if(status[i] == 0 && p == 1){
-                   empilha(pilha, i); 
+                if(vs[i] == 0 && k == 1){
+                    empilha(&p, i);
                 }
             }
         }
     }
-
+    
     return 0;
 }
+
+
