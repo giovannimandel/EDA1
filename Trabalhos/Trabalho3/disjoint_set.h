@@ -7,7 +7,7 @@ typedef struct ele{
 //Lista (elemento da multilista)
 typedef struct{
     Elemento *cabeca;
-
+    int tamInfo, qtd;
 }Lista;
 
 //Multilista simulando a estrutura uniao-busca
