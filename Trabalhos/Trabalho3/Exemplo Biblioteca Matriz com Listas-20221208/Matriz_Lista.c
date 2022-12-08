@@ -1,5 +1,5 @@
+#include "Matriz_Lista.h"
 #include <stdio.h>
-#include "disjoint_set.h"
 
 void inicializa_matriz( Matriz *p, int l, int c ){
 	inicializa_lista( &p->dados, sizeof( Lista ) );
@@ -39,6 +39,4 @@ int set_valor( Matriz *p, int i, int j, int v ){
 	return 1; // Sucesso!
 }
 
-void uniao(Matriz u, ){
 
-}
