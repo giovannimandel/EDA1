@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "disjoint_set.h"
+#include "Conjuntos.h"
+
 
 void inicializa_matriz( Matriz *p, int l, int c ){
 	inicializa_lista( &p->dados, sizeof( Lista ) );
@@ -39,6 +40,52 @@ int set_valor( Matriz *p, int i, int j, int v ){
 	return 1; // Sucesso!
 }
 
-void uniao(Matriz u, ){
+void inicializa_conjuntos(Matriz *p){
+	inicializa_lista(&p->dados, sizeof(Lista));
+}
 
+int busca_conjunto(Matriz u, int x){
+	
+	Lista l;
+	int i;
+	for(i=0; le_valor(u.dados, &l, i) != ERRO_POS_INVALIDA; i++){
+		if(busca(&l, &u, compara) != -1)
+			return i;
+	}
+	return -1;
+}
+
+int cria_conjunto(Matriz *p, int v){
+	if(busca_conjunto(*p, v) != -1)
+		return 0;
+	
+	Lista l;
+	inicializa_lista(&l, sizeof(int));
+	insere_inicio(&l, &v);
+	insere_fim(&p->dados, &l);
+
+	return 1;
+}
+
+int compara(void *x, void *y){
+	int *a = x, *b = y;
+	return *a - *b;
+}
+
+int carrega_arquivo( char *nome, Matriz *p ){
+	Lista sub;
+
+	FILE *f = fopen( nome, "rt" );
+	if( f == NULL )
+		return 0;
+	
+	int l, c, i, j;
+	fscanf( f, "%d%d", &l, &c);
+	inicializa_matriz( p, l, c );
+	for( i = 0 ; i < l ; i++ )
+		for( j = 0 ; j < c ; j++ )
+			fscanf( f , "%d", &p->dados );
+	
+	fclose( f );
+	return 1;
 }

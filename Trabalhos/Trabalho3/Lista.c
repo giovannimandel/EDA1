@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "Lista.h"
-#include "Pilha.h"
+//#include "Pilha.h"
 
 //Privado------------------------
 
@@ -279,24 +279,24 @@ Lista busca_todos( Lista l, void *info, int (*compara)(void*,void*) ){
 	// }
 }
 
-Lista inverte_com_pilha(Lista *l){
-	Elemento *aux = l->cabeca;
-	Pilha p;
-	inicializa_pilha(&p);
-	int qtd = l->qtd;
-	int k;
-	int *h;
+// Lista inverte_com_pilha(Lista *l){
+// 	Elemento *aux = l->cabeca;
+// 	Pilha p;
+// 	inicializa_pilha(&p);
+// 	int qtd = l->qtd;
+// 	int k;
+// 	int *h;
 
 
-	for(int i = 0; i < qtd; i++, aux = aux->proximo){
-		h = aux->info;
-		empilha(&p, *h);
-	}
-	limpa_lista(l);
-	for(int i = 0, j = 0; i < qtd; i++, j++){
-		desempilha(&p, &k);
-		insere_pos(l, &k, j);
-	}
+// 	for(int i = 0; i < qtd; i++, aux = aux->proximo){
+// 		h = aux->info;
+// 		empilha(&p, *h);
+// 	}
+// 	limpa_lista(l);
+// 	for(int i = 0, j = 0; i < qtd; i++, j++){
+// 		desempilha(&p, &k);
+// 		insere_pos(l, &k, j);
+// 	}
 
-	return *l;
-}
+// 	return *l;
+// }

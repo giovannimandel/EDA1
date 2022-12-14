@@ -18,3 +18,7 @@ int soma_matrizes( Matriz m1, Matriz m2, Matriz *p );
 //int multiplica_matrizes( Matriz m1, Matriz m2, Matriz *p );
 int sao_iguais( Matriz m1, Matriz m2 );
 
+int compara(void *x, void *y);
+int cria_conjunto(Matriz *p, int v);
+int busca_conjunto(Matriz u, int x);
+void inicializa_conjuntos(Matriz *p);
